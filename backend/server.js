@@ -1,10 +1,12 @@
 const express = require("express");
 const {MongoClient} = require("mongodb");
+var ObjectID = require('mongodb').ObjectID;
 const bodyParser = require("body-parser");
 const cors = require('cors');
 const client = new MongoClient("mongodb://localhost:27017");
-const app = express();
 
+
+const app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(cors());
@@ -140,6 +142,66 @@ app.post("/cinemahallseat/:hallname", function(req, res){
     });
 
 });
+
+
+
+async function boughtTickets(email)
+{
+    let returnValue = 0;
+   
+    try{
+        await client.connect();
+        returnValue = await client.db("ticketbookdb").collection("boughttickets").find({"email": email}).toArray();
+    }catch{
+        returnValue = "Error";
+    }finally{
+        client.close();
+    }
+
+    return returnValue;
+}
+app.post("/boughttickets/:email", function(req, res){
+
+
+    //console.log(req.params.email);
+    boughtTickets(req.params.email).then((data) => {
+
+        res.send(data);
+        //console.log(data);
+
+    });
+
+});
+
+
+async function deleteTicket(id)
+{
+    let returnValue = 0;
+
+    console.log(id);
+    try{
+        await client.connect();
+        returnValue = await client.db("ticketbookdb").collection("boughttickets").deleteOne({boughtticketid: id});
+    }catch{
+        returnValue = "Error";
+    }finally{
+        client.close();
+    }
+
+    return returnValue;
+}
+app.post("/deleteticket/:id", function(req, res){
+
+
+    deleteTicket(req.params.id).then((data) => {
+
+        res.send(data);
+        //console.log(data);
+
+    });
+
+});
+
 
 
 

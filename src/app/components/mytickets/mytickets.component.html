@@ -1,1 +1,15 @@
-<p>mytickets works!</p>
+
+<div *ngFor="let elem of data">
+    TicketNumbersBought
+    {{elem.ticketnumbersbought}}
+    cinemahallname
+    {{elem.cinemahallname}}
+    ShowName
+    {{elem.showname}}
+    Date
+    Date
+    Total Price
+    Total Price
+    <button (click)="cancelTicket(elem.boughtticketid, elem.ticketnumbersbought)">Cancel Ticket</button>
+</div>
+<div>

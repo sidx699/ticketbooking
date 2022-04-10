@@ -65,8 +65,10 @@ export class SelectSeatsComponent implements OnInit {
             var dateToday = d.getDate()+"-"+(d.getMonth()+1)+"-"+d.getFullYear();
 
             var email = localStorage.getItem("signed_in_email");
+            var idMake = d.getDate()+""+(d.getMonth()+1)+""+d.getFullYear()+""+d.getHours()+""+d.getMinutes();
+
             let data = {
-                "boughtticketid": 1,
+                "boughtticketid": idMake,
                 "email": email,
                 "ticketnumbersbought": this.elementSelected,
                 "cinemahallname": this.cinremahallname,
