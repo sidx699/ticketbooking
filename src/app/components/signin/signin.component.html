@@ -1,0 +1,13 @@
+<h1>Log In </h1>
+
+<form #myform="ngForm" (ngSubmit)="onSubmit(myform)" style="width: 40%">
+
+  <input type="email" class="form-control" name="email" placeholder="Enter your Email" ngModel>
+  <br/>
+  <input type="password" class="form-control" name="password" placeholder="Enter your Password" ngModel>
+  <br/>
+ 
+  <input type="submit" class="btn btn-outline-primary" value="Log In">
+</form>
+
+<a routerLinkActive="active" routerLink="/signup">Sign Up</a>
