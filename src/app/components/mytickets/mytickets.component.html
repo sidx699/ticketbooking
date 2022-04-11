@@ -1,15 +1,23 @@
 
 <div *ngFor="let elem of data">
-    TicketNumbersBought
-    {{elem.ticketnumbersbought}}
-    cinemahallname
-    {{elem.cinemahallname}}
-    ShowName
-    {{elem.showname}}
-    Date
-    Date
-    Total Price
-    Total Price
-    <button (click)="cancelTicket(elem.boughtticketid, elem.ticketnumbersbought)">Cancel Ticket</button>
+    <div class="card" style="width: 30rem;">
+        <div class="card-body">
+          <h5 class="card-title">Ticket Id: {{elem.boughtticketid}} Total Price Rs. {{elem.totalprice}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Seats Booked {{elem.ticketnumbersbought}}  </h6>
+          <p class="card-text">{{elem.cinemahallname}} {{elem.dateofshow}}</p>
+          <button class="btn btn-danger" (click)="cancelTicket(elem.boughtticketid, elem.ticketnumbersbought)">Cancel Ticket</button>
+        </div>
+      </div>
+
+
+
+
+
+
+    
+    
+    
+   
+    
 </div>
 <div>

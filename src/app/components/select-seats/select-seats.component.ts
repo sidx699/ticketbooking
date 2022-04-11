@@ -22,7 +22,6 @@ export class SelectSeatsComponent implements OnInit {
 
 
     dict: {[name: string]: boolean} = {};
-    modifieddict: {[name: string]: boolean} = {};
     
     
     
@@ -32,7 +31,6 @@ export class SelectSeatsComponent implements OnInit {
         this.cinremahallname = this.href.split("/")[2];
         this.cinemahallseatsGet(this.cinremahallname).subscribe(data=>{
             this.dict = data.seats;
-            this.modifieddict = data.seats; 
         });
     }
 
@@ -50,7 +48,7 @@ export class SelectSeatsComponent implements OnInit {
 
   sendPostRequest(data: any): Observable<any> 
   {
-    return this.http.post<any>("http://localhost:3000/ticketbookedanddictmodify/"+JSON.stringify(data)+"/"+this.cinremahallname+"/"+JSON.stringify(this.modifieddict),"");
+    return this.http.post<any>("http://localhost:3000/ticketbookedanddictmodify/"+JSON.stringify(data)+"/"+this.cinremahallname+"/"+JSON.stringify(this.dict),"");
   }
 
   countSeat()
@@ -73,8 +71,8 @@ export class SelectSeatsComponent implements OnInit {
                 "ticketnumbersbought": this.elementSelected,
                 "cinemahallname": this.cinremahallname,
                 "showname": "Movie Name",
-                "Date of Show": dateToday,
-                "Total Price": this.elementSelected.length*200
+                "dateofshow": dateToday,
+                "totalprice": this.elementSelected.length*200
             };
            
             this.sendPostRequest(data).subscribe();
@@ -113,7 +111,7 @@ export class SelectSeatsComponent implements OnInit {
             var currentSeat = <HTMLInputElement> document.getElementById("a"+String(i));
             if(currentSeat.checked)
             {
-                this.modifieddict["a"+i] = true;
+                this.dict["a"+i] = true;
                 this.elementSelected.push("a"+i);
             }
         }
@@ -122,7 +120,7 @@ export class SelectSeatsComponent implements OnInit {
             var currentSeat = <HTMLInputElement> document.getElementById("b"+String(i));
             if(currentSeat.checked)
             {
-                this.modifieddict["b"+i] = true;
+                this.dict["b"+i] = true;
                 this.elementSelected.push("b"+i);
             }
         }
@@ -131,7 +129,7 @@ export class SelectSeatsComponent implements OnInit {
             var currentSeat = <HTMLInputElement> document.getElementById("c"+String(i));
             if(currentSeat.checked)
             {
-                this.modifieddict["c"+i] = true;
+                this.dict["c"+i] = true;
                 this.elementSelected.push("c"+i);
             }
         }  
