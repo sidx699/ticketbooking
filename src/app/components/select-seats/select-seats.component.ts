@@ -75,8 +75,10 @@ export class SelectSeatsComponent implements OnInit {
                 "totalprice": this.elementSelected.length*200
             };
            
-            this.sendPostRequest(data).subscribe();
-            this.router.navigate(['mytickets']);
+            this.sendPostRequest(data).subscribe(data =>
+                this.router.navigate(['mytickets'])
+            );
+            
 
         }
         else{

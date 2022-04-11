@@ -1,17 +1,26 @@
-Select Number of Seats:
-<div style="text-align:center">
-    <input type="radio" [(ngModel)]="noSeats" value="1"  ng-checked="true">1
-    <input type="radio" [(ngModel)]="noSeats" value="2">2
-    <input type="radio" [(ngModel)]="noSeats" value="3">3
-    <input type="radio" [(ngModel)]="noSeats" value="4">4
-    <input type="radio" [(ngModel)]="noSeats" value="5">5
-    <input type="radio" [(ngModel)]="noSeats" value="6">6
-    <input type="radio" [(ngModel)]="noSeats" value="7">7
-    <input type="radio" [(ngModel)]="noSeats" value="8">8
-    <input type="radio" [(ngModel)]="noSeats" value="9">9
-    <input type="radio" [(ngModel)]="noSeats" value="10">10
-</div>
-
-<button (click)="proceed()">Proceed</button>
-
- <!-- <a routerLinkActive="active" routerLink="/select-seats" [routerLink]="['/noOfTickets', noSeats]" >Proceed</a> -->
+<style>
+    .center{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);
+    }
+    </style>
+    
+    
+    <div class="center">
+        <em>Select Number of Seats:</em><br>
+        <input type="radio" [(ngModel)]="noSeats" value="1"  ng-checked="true">1
+        <input type="radio" [(ngModel)]="noSeats" value="2">2
+        <input type="radio" [(ngModel)]="noSeats" value="3">3
+        <input type="radio" [(ngModel)]="noSeats" value="4">4
+        <input type="radio" [(ngModel)]="noSeats" value="5">5
+        <input type="radio" [(ngModel)]="noSeats" value="6">6
+        <input type="radio" [(ngModel)]="noSeats" value="7">7
+        <input type="radio" [(ngModel)]="noSeats" value="8">8
+        <input type="radio" [(ngModel)]="noSeats" value="9">9
+        <input type="radio" [(ngModel)]="noSeats" value="10">10<br>
+        <button  class="btn btn-outline-primary" (click)="proceed()">Proceed</button>
+    </div>
+    
